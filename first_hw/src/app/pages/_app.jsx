@@ -1,13 +1,14 @@
 // src/app/pages/_app.jsx
 
 import '../../styles/globals.css';
+import { PageTitleProvider } from '../context/PageTitleContext';
 import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
+    <PageTitleProvider>
       <Component {...pageProps} />
-    </Layout>
+    </PageTitleProvider>
   );
 }
 

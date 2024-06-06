@@ -1,25 +1,24 @@
 import Link from 'next/link';
-import { pageTitle as homeTitle } from '../pages/index';
-import { pageTitle as aboutTitle } from '../pages/about';
-import { pageTitle as blogTitle } from '../pages/blog';
+import { usePageTitles } from '../context/PageTitleContext';
 
 const Navigation = () => {
+  const { home, about, blog } = usePageTitles();
     return (
         <nav className="p-4 bg-gray-800 text-white">
         <ul className="flex space-x-4 justify-center md:justify-start">
             <li>
             <Link href="/" className="hover:underline">
-                {homeTitle}
+                {home}
             </Link>
             </li>
             <li>
             <Link href="/about" className="hover:underline">
-                {aboutTitle}
+                {about}
             </Link>
             </li>
             <li>
             <Link href="/blog" className="hover:underline">
-                {blogTitle}
+                {blog}
             </Link>
             </li>
         </ul>
