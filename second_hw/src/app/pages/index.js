@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import TaskList from '../components/TaskList';
 
 export default function Home() {
   const [tasks, setTasks] = useState([]);
@@ -33,19 +34,7 @@ export default function Home() {
         placeholder="Add a new task"
       />
       <button onClick={handleAddTask}>Add Task</button>
-      <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>
-            <span
-              style={{ textDecoration: task.completed ? 'line-through' : 'none' }}
-              onClick={() => handleToggleTask(index)}
-            >
-              {task.text}
-            </span>
-            <button onClick={() => handleDeleteTask(index)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      <TaskList tasks={tasks} onToggleTask={handleToggleTask} onDeleteTask={handleDeleteTask} />
     </div>
   );
 }
