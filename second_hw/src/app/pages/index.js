@@ -1,9 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TaskList from '../components/TaskList';
 
 export default function Home() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
+
+  useEffect(() => {
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleAddTask = () => {
     if (newTask.trim()) {
